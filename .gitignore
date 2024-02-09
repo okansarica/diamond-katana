@@ -7,3 +7,6 @@ backend/DiamondKata/ECA.DiamondKata.BusinessLayer/obj
 backend/DiamondKata/ECA.DiamondKata.BusinessLayer/bin
 backend/DiamondKata/ECA.DiamondKata.BusinessLayerTests/bin
 backend/DiamondKata/ECA.DiamondKata.BusinessLayerTests/obj
+*.user
+backend/DiamondKata/ECA.DiamondKata.ConsoleAppTests/bin
+backend/DiamondKata/ECA.DiamondKata.ConsoleAppTests/obj

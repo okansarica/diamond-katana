@@ -11,4 +11,8 @@
       <ProjectReference Include="..\ECA.DiamondKata.BusinessLayer\ECA.DiamondKata.BusinessLayer.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="NLog" Version="5.2.8" />
+    </ItemGroup>
+
 </Project>
