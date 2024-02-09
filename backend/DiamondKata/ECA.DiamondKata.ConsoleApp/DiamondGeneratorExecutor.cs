@@ -8,6 +8,7 @@ public class DiamondGeneratorExecutor(IDiamondKatanaService diamondKatanaService
 {
     public void Execute(string[] args)
     {
+        //The input should be a single character
         if (args.Length != 1 ||
             args[0].Length != 1)
         {
@@ -15,6 +16,7 @@ public class DiamondGeneratorExecutor(IDiamondKatanaService diamondKatanaService
             return;
         }
 
+        //We verified that the input is a single character
         var inputChar = args[0][0];
 
         List<string> diamond;
@@ -25,6 +27,7 @@ public class DiamondGeneratorExecutor(IDiamondKatanaService diamondKatanaService
         }
         catch (ValidationException ex)
         {
+            //The service throws validation exception when the input is not valid, so we are directly showing the message
             Console.WriteLine(ex.Message);
             return;
         }
@@ -35,6 +38,7 @@ public class DiamondGeneratorExecutor(IDiamondKatanaService diamondKatanaService
             return;
         }
 
+        //Print the diamond line by line
         foreach (string line in diamond)
         {
             Console.WriteLine(line);
