@@ -3,9 +3,12 @@ namespace ECA.DiamondKata.BusinessLayer.Concrete;
 using Abstract;
 using System.Text;
 
+
 public class DiamondKatanaService : IDiamondKatanaService
 {
     private const char StartingCharacter = 'A';
+    
+    /// <inheritdoc/>
     public List<string> GenerateDiamond(char input)
     {
         if (!char.IsLetter(input))
@@ -48,7 +51,7 @@ public class DiamondKatanaService : IDiamondKatanaService
         //This is the builder that will store the whole line
         var builder = new StringBuilder();
 
-        //We are adding the lines to the left side of the row
+        //We are adding the spaces to the left side of the character
         builder.Append(underScore, blankCharactersCountAround);
 
         //We are converting the ascii code to character by adding the distance to the starting character and subtracting the abs(currentLineIndex) which is blankCharactersCountAround
@@ -57,7 +60,7 @@ public class DiamondKatanaService : IDiamondKatanaService
         //We are adding the first character for the line.
         builder.Append(currentCharacter);
 
-        //This condition is used to check if we are at the first or the last line
+        //This condition is used to check if we are at the first or at the last line
         if (blankCharactersCountAround != characterDistance)
         {
             //We need to add the empty spaces between the characters. The quantity of spaces are calculated by reducing the spaces between and the occurrences of the  char which is 2 from total row length
@@ -67,7 +70,7 @@ public class DiamondKatanaService : IDiamondKatanaService
             builder.Append(currentCharacter);
         }
 
-        //We are adding the lines to the right side of the row
+        //We are adding the spaces to the right side of the character
         builder.Append(underScore, blankCharactersCountAround);
 
         return builder.ToString();
