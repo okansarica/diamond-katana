@@ -1,0 +1,9 @@
+backend/DiamondKata/.idea
+backend/DiamondKata/ECA.DiamondKata.ConsoleApp/obj
+backend/DiamondKata/ECA.DiamondKata.ConsoleApp/bin
+backend/DiamondKata/ECA.DiamondKata.Api/obj
+backend/DiamondKata/ECA.DiamondKata.Api/bin
+backend/DiamondKata/ECA.DiamondKata.BusinessLayer/obj
+backend/DiamondKata/ECA.DiamondKata.BusinessLayer/bin
+backend/DiamondKata/ECA.DiamondKata.BusinessLayerTests/bin
+backend/DiamondKata/ECA.DiamondKata.BusinessLayerTests/obj
