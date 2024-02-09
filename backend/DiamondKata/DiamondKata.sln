@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECA.DiamondKata.ConsoleApp", "ECA.DiamondKata.ConsoleApp\ECA.DiamondKata.ConsoleApp.csproj", "{BCF21932-7DBF-4C30-82CC-F7AF12D5F680}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECA.DiamondKata.BusinessLayer", "ECA.DiamondKata.BusinessLayer\ECA.DiamondKata.BusinessLayer.csproj", "{B5D5F42F-1D31-474F-9914-1C81D987779C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECA.DiamondKata.Api", "ECA.DiamondKata.Api\ECA.DiamondKata.Api.csproj", "{FE9F2F37-4C75-4EA8-B727-1A3D0D6A4B17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECA.DiamondKata.BusinessLayerTests", "ECA.DiamondKata.BusinessLayerTests\ECA.DiamondKata.BusinessLayerTests.csproj", "{7B5F7F82-CDF0-433A-B33D-62982DD9B18C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCF21932-7DBF-4C30-82CC-F7AF12D5F680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCF21932-7DBF-4C30-82CC-F7AF12D5F680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCF21932-7DBF-4C30-82CC-F7AF12D5F680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCF21932-7DBF-4C30-82CC-F7AF12D5F680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D5F42F-1D31-474F-9914-1C81D987779C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D5F42F-1D31-474F-9914-1C81D987779C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D5F42F-1D31-474F-9914-1C81D987779C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D5F42F-1D31-474F-9914-1C81D987779C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE9F2F37-4C75-4EA8-B727-1A3D0D6A4B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE9F2F37-4C75-4EA8-B727-1A3D0D6A4B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE9F2F37-4C75-4EA8-B727-1A3D0D6A4B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE9F2F37-4C75-4EA8-B727-1A3D0D6A4B17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B5F7F82-CDF0-433A-B33D-62982DD9B18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B5F7F82-CDF0-433A-B33D-62982DD9B18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B5F7F82-CDF0-433A-B33D-62982DD9B18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B5F7F82-CDF0-433A-B33D-62982DD9B18C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
