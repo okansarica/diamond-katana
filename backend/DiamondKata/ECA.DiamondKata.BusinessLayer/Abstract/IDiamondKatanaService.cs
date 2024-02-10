@@ -1,5 +1,7 @@
 namespace ECA.DiamondKata.BusinessLayer.Abstract;
 
+using ViewModel.Response;
+
 public interface IDiamondKatanaService
 {
     /// <summary>
@@ -7,5 +9,5 @@ public interface IDiamondKatanaService
     /// </summary>
     /// <param name="input">The character input which will be at the middle line of the diamond</param>
     /// <returns></returns>
-    List<string> GenerateDiamond(char input);
+    List<DiamondResponseViewModel> GenerateDiamond(char input);
 }

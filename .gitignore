@@ -10,3 +10,8 @@ backend/DiamondKata/ECA.DiamondKata.BusinessLayerTests/obj
 *.user
 backend/DiamondKata/ECA.DiamondKata.ConsoleAppTests/bin
 backend/DiamondKata/ECA.DiamondKata.ConsoleAppTests/obj
+backend/DiamondKata/ECA.DiamondKata.ViewModel/obj
+backend/DiamondKata/ECA.DiamondKata.ViewModel/bin
+backend/DiamondKata/ECA.DiamondKata.ApiTests/bin
+backend/DiamondKata/ECA.DiamondKata.ApiTests/obj
+client/.idea

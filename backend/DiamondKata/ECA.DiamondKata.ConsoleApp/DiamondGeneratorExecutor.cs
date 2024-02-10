@@ -3,6 +3,8 @@ namespace ECA.DiamondKata.ConsoleApp;
 using BusinessLayer;
 using BusinessLayer.Abstract;
 using NLog;
+using System.Text;
+using ViewModel.Response;
 
 public class DiamondGeneratorExecutor(IDiamondKatanaService diamondKatanaService) : IDiamondGeneratorExecutor
 {
@@ -19,7 +21,7 @@ public class DiamondGeneratorExecutor(IDiamondKatanaService diamondKatanaService
         //We verified that the input is a single character
         var inputChar = args[0][0];
 
-        List<string> diamond;
+        List<DiamondResponseViewModel> diamond;
 
         try
         {
@@ -37,11 +39,26 @@ public class DiamondGeneratorExecutor(IDiamondKatanaService diamondKatanaService
             LogManager.GetCurrentClassLogger().Error(ex, "Unexpected Error");
             return;
         }
+        PrintDiamond(diamond);
+    }
 
-        //Print the diamond line by line
-        foreach (string line in diamond)
+    private void PrintDiamond(List<DiamondResponseViewModel> diamond)
+    {
+        const char underscore = '_';
+        
+        foreach (var diamondRow in diamond)
         {
-            Console.WriteLine(line);
+            var builder = new StringBuilder();
+            builder.Append(underscore, diamondRow.SideSpaceQuantity);
+            builder.Append(diamondRow.Character);
+
+            if (diamondRow.MiddleSpaceQuantity > 0)
+            {
+                builder.Append(underscore, diamondRow.MiddleSpaceQuantity);
+                builder.Append(diamondRow.Character);
+            }
+            builder.Append(underscore, diamondRow.SideSpaceQuantity);
+            Console.WriteLine(builder);
         }
     }
 }
