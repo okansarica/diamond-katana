@@ -4,6 +4,7 @@ using BusinessLayer;
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using FluentAssertions;
+using ViewModel.Response;
 
 public class DiamondServiceTests
 {
@@ -21,18 +22,27 @@ public class DiamondServiceTests
         // Arrange is already done
 
         // Act
-        Action act = () => _service.GenerateDiamond(input);
+        var act = () => _service.GenerateDiamond(input);
 
         // Assert
         act.Should().Throw<ValidationException>().WithMessage(expectedMessage);
     }
-    
-    
+
+
     [Fact]
     public void GenerateDiamond_WithA_GeneratesSingleLineDiamond()
     {
         // Arrange
-        var expected = new List<string> { "A" };
+        var expected = new List<DiamondResponseViewModel>
+        {
+            new DiamondResponseViewModel
+            {
+                Character = "A",
+                SideSpaceQuantity = 0,
+                MiddleSpaceQuantity = 0,
+                SortOrder = 0
+            }
+        };
 
         // Act
         var result = _service.GenerateDiamond('A');
@@ -40,60 +50,91 @@ public class DiamondServiceTests
         // Assert
         result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
     }
-    
+
     [Fact]
     public void GenerateDiamond_WithValidInputC_GeneratesCorrectDiamond()
     {
         // Arrange
-        var expectedDiamond = new List<string>
+        var expected = new List<DiamondResponseViewModel>
         {
-            "__A__",
-            "_B_B_", 
-            "C___C",
-            "_B_B_",
-            "__A__"
+            new DiamondResponseViewModel
+            {
+                Character = "A",
+                SideSpaceQuantity = 2,
+                MiddleSpaceQuantity = 0,
+                SortOrder = -2
+            },
+            new DiamondResponseViewModel
+            {
+                Character = "B",
+                SideSpaceQuantity = 1,
+                MiddleSpaceQuantity = 1,
+                SortOrder = -1
+            },
+            new DiamondResponseViewModel
+            {
+                Character = "C",
+                SideSpaceQuantity = 0,
+                MiddleSpaceQuantity = 3,
+                SortOrder = 0
+            },
+            new DiamondResponseViewModel
+            {
+                Character = "B",
+                SideSpaceQuantity = 1,
+                MiddleSpaceQuantity = 1,
+                SortOrder = 1
+            },
+            new DiamondResponseViewModel
+            {
+                Character = "A",
+                SideSpaceQuantity = 2,
+                MiddleSpaceQuantity = 0,
+                SortOrder = 2
+            },
         };
 
         // Act
         var result = _service.GenerateDiamond('C');
 
         // Assert
-        result.Should().BeEquivalentTo(expectedDiamond, options => options.WithStrictOrdering());
+        result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
     }
-    
+
     [Fact]
     public void GenerateDiamond_WithValidInputK_GeneratesCorrectDiamond()
     {
         // Arrange
-        var expectedDiamond = new List<string>
+        var expected = new List<DiamondResponseViewModel>
         {
-            "__________A__________",
-            "_________B_B_________",
-            "________C___C________",
-            "_______D_____D_______",
-            "______E_______E______",
-            "_____F_________F_____",
-            "____G___________G____",
-            "___H_____________H___",
-            "__I_______________I__",
-            "_J_________________J_",
-            "K___________________K",
-            "_J_________________J_",
-            "__I_______________I__",
-            "___H_____________H___",
-            "____G___________G____",
-            "_____F_________F_____",
-            "______E_______E______",
-            "_______D_____D_______",
-            "________C___C________",
-            "_________B_B_________",
-            "__________A__________"
+            new DiamondResponseViewModel { Character = "A", SideSpaceQuantity = 10, MiddleSpaceQuantity = 0, SortOrder = -10 },
+            new DiamondResponseViewModel { Character = "B", SideSpaceQuantity = 9, MiddleSpaceQuantity = 1, SortOrder = -9 },
+            new DiamondResponseViewModel { Character = "C", SideSpaceQuantity = 8, MiddleSpaceQuantity = 3, SortOrder = -8 },
+            new DiamondResponseViewModel { Character = "D", SideSpaceQuantity = 7, MiddleSpaceQuantity = 5, SortOrder = -7 },
+            new DiamondResponseViewModel { Character = "E", SideSpaceQuantity = 6, MiddleSpaceQuantity = 7, SortOrder = -6 },
+            new DiamondResponseViewModel { Character = "F", SideSpaceQuantity = 5, MiddleSpaceQuantity = 9, SortOrder = -5 },
+            new DiamondResponseViewModel { Character = "G", SideSpaceQuantity = 4, MiddleSpaceQuantity = 11, SortOrder = -4 },
+            new DiamondResponseViewModel { Character = "H", SideSpaceQuantity = 3, MiddleSpaceQuantity = 13, SortOrder = -3 },
+            new DiamondResponseViewModel { Character = "I", SideSpaceQuantity = 2, MiddleSpaceQuantity = 15, SortOrder = -2 },
+            new DiamondResponseViewModel { Character = "J", SideSpaceQuantity = 1, MiddleSpaceQuantity = 17, SortOrder = -1 },
+            new DiamondResponseViewModel { Character = "K", SideSpaceQuantity = 0, MiddleSpaceQuantity = 19, SortOrder = 0 },
+            new DiamondResponseViewModel { Character = "J", SideSpaceQuantity = 1, MiddleSpaceQuantity = 17, SortOrder = 1 },
+            new DiamondResponseViewModel { Character = "I", SideSpaceQuantity = 2, MiddleSpaceQuantity = 15, SortOrder = 2 },
+            new DiamondResponseViewModel { Character = "H", SideSpaceQuantity = 3, MiddleSpaceQuantity = 13, SortOrder = 3 },
+            new DiamondResponseViewModel { Character = "G", SideSpaceQuantity = 4, MiddleSpaceQuantity = 11, SortOrder = 4 },
+            new DiamondResponseViewModel { Character = "F", SideSpaceQuantity = 5, MiddleSpaceQuantity = 9, SortOrder = 5 },
+            new DiamondResponseViewModel { Character = "E", SideSpaceQuantity = 6, MiddleSpaceQuantity = 7, SortOrder = 6 },
+            new DiamondResponseViewModel { Character = "D", SideSpaceQuantity = 7, MiddleSpaceQuantity = 5, SortOrder = 7 },
+            new DiamondResponseViewModel { Character = "C", SideSpaceQuantity = 8, MiddleSpaceQuantity = 3, SortOrder = 8 },
+            new DiamondResponseViewModel { Character = "B", SideSpaceQuantity = 9, MiddleSpaceQuantity = 1, SortOrder = 9 },
+            new DiamondResponseViewModel { Character = "A", SideSpaceQuantity = 10, MiddleSpaceQuantity = 0, SortOrder = 10 }
         };
+
 
         // Act
         var result = _service.GenerateDiamond('K');
 
         // Assert
-        result.Should().BeEquivalentTo(expectedDiamond, options => options.WithStrictOrdering());
+        result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
     }
 }

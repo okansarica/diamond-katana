@@ -5,6 +5,7 @@ using BusinessLayer.Abstract;
 using ConsoleApp;
 using FluentAssertions;
 using Moq;
+using ViewModel.Response;
 
 public class DiamondGeneratorExecutorTests
 {
@@ -93,7 +94,30 @@ public class DiamondGeneratorExecutorTests
     {
         // Arrange
         var input = new[] { "B" };
-        _mockDiamondKatanaService.Setup(p => p.GenerateDiamond(It.IsAny<char>())).Returns(["_A_", "B_B", "_A_"]);
+        _mockDiamondKatanaService.Setup(p => p.GenerateDiamond(It.IsAny<char>())).Returns(new List<DiamondResponseViewModel>
+        {
+            new DiamondResponseViewModel
+            {
+                Character = "A",
+                MiddleSpaceQuantity = 0,
+                SideSpaceQuantity = 1,
+                SortOrder = -1
+            },
+            new DiamondResponseViewModel
+            {
+                Character = "B",
+                MiddleSpaceQuantity = 1,
+                SideSpaceQuantity = 0,
+                SortOrder = 0
+            },
+            new DiamondResponseViewModel
+            {
+                Character = "A",
+                MiddleSpaceQuantity = 0,
+                SideSpaceQuantity = 1,
+                SortOrder = 1
+            },
+        });
         
         // Redirect console output to capture the print
         using var consoleOutput = new StringWriter();
