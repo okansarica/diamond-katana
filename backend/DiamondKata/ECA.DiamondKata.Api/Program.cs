@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IDiamondKatanaService, DiamondKatanaService>();
 
+//This is used the compress responses
 builder.Services.AddResponseCompression(options =>
 {
     options.Providers.Add<BrotliCompressionProvider>();
@@ -25,6 +26,7 @@ builder.Services.AddResponseCompression(options =>
 .AddControllers()
 .AddJsonOptions(options =>
 {
+    //This is used not to include null values in json response
     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
 
@@ -42,12 +44,15 @@ builder.Services.AddCors(options =>
     })
     .AddLogging();
 
+//Swagger configuration
 builder.Services.AddEndpointsApiExplorer()
     .AddSwaggerGen();
 
 var app = builder.Build();
 
 app.UseCors("AllowAllOrigins");
+
+//Custom middleware to handle exceptions
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseResponseCompression();
 app.UseResponseCaching();

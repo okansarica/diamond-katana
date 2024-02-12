@@ -7,6 +7,10 @@ namespace ECA.DiamondKata.Api.Infrastructure;
 using BusinessLayer;
 using NLog;
 
+/// <summary>
+/// This middleware simply catches all exceptions and separate them regarding their types. If the exception is a validation exception it return 400 bad request with a json object that includes the validation message, otherwise returns 500 internal error and logs the error. 500 responses also contains a tracking id to match the errors and makes them easy to find from the logs.
+/// </summary>
+/// <param name="next"></param>
 public class ExceptionMiddleware(RequestDelegate next)
 {
     private ILogger _logger;
