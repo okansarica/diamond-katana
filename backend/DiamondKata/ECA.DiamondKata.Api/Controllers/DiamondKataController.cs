@@ -4,10 +4,13 @@ using BusinessLayer;
 using BusinessLayer.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using ViewModel.Request;
+using ViewModel.Response;
 
+[Route("[controller]")]
 public class DiamondKataController(IDiamondKatanaService diamondKatanaService) : Controller
 {
     [HttpPost]
+    [ProducesResponseType(typeof(List<DiamondResponseViewModel>), StatusCodes.Status200OK)]
     public IActionResult GenerateDiamond([FromBody] GenerateRequestViewModel generateRequestViewModel)
     {
         if (generateRequestViewModel == null ||

@@ -1,11 +1,15 @@
-using System.ComponentModel.DataAnnotations;
+
 using System.Net;
 using System.Text.Json;
 
 namespace ECA.DiamondKata.Api.Infrastructure;
 
-public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
+using BusinessLayer;
+using NLog;
+
+public class ExceptionMiddleware(RequestDelegate next)
 {
+    private ILogger _logger;
     public async Task InvokeAsync(HttpContext httpContext)
     {
         try
@@ -18,6 +22,7 @@ public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddlewa
         }
         catch (Exception exception)
         {
+            _logger = LogManager.GetCurrentClassLogger();
             await HandleExceptionAsync(httpContext, exception);
         }
     }
@@ -25,7 +30,8 @@ public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddlewa
     private async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         var trackingId = Guid.NewGuid().ToString();
-        logger.LogError(exception, "An unhandled exception has occurred. TrackingId: {TrackingId}", trackingId);
+        
+        _logger.Error(exception, "An unhandled exception has occurred. TrackingId: {TrackingId}", trackingId);
         
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

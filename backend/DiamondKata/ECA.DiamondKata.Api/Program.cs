@@ -29,17 +29,21 @@ builder.Services.AddResponseCompression(options =>
 });
 
 builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAllOrigins",
-        builder =>
-        {
-            builder.WithOrigins(
-                    "http://localhost:4000")
-                .AllowAnyHeader()
-                .AllowCredentials()
-                .AllowAnyMethod();
-        });
-});
+    {
+        options.AddPolicy("AllowAllOrigins",
+            builder =>
+            {
+                builder.WithOrigins(
+                        "http://localhost:3000")
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .AllowAnyMethod();
+            });
+    })
+    .AddLogging();
+
+builder.Services.AddEndpointsApiExplorer()
+    .AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -49,4 +53,10 @@ app.UseResponseCompression();
 app.UseResponseCaching();
 app.MapControllers();
 
-app.RunAsync();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.Run();
