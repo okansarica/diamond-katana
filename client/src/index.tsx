@@ -5,8 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ErrorBoundary } from "react-error-boundary";
 
-// @ts-ignore
-
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

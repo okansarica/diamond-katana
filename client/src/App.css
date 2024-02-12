@@ -89,15 +89,6 @@
     }
 }
 
-.diamond-container{
-    padding-top: 20px;
-}
-
-.diamond-row{
-    padding-top: 5px;
-}
-
-
 
 @media (max-width: 479px) {
     .app-content {
